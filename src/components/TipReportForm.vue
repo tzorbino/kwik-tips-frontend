@@ -250,7 +250,7 @@ export default {
 
       console.log('Sending reportData:', reportData);
 
-      axios.post('http://kwik-tips-backend.onrender.com/api/tip-reports/generate', reportData, { headers })
+      axios.post('https://kwik-tips-backend.uk.r.appspot.com/api/tip-reports/generate', reportData, { headers })
         .then(response => {
           console.log('Report saved:', response.data);
           const reportId = response.data.id;

@@ -189,17 +189,17 @@ export default {
       const reportId = this.$route.params.id;
 
       // Step 1: Get the base report to determine its type
-      axios.get(`http://kwik-tips-backend.onrender.com/api/tip-reports/${reportId}`, { headers })
+      axios.get(`https://kwik-tips-backend.uk.r.appspot.com/api/tip-reports/${reportId}`, { headers })
         .then(response => {
           const rawReport = response.data;
           const reportType = rawReport.reportType;
 
           if (reportType && reportType.toLowerCase() === 'server') {
             this.isServerReport = true;
-            return axios.get(`http://kwik-tips-backend.onrender.com/api/tip-reports/server/${reportId}`, { headers });
+            return axios.get(`https://kwik-tips-backend.uk.r.appspot.com/api/tip-reports/server/${reportId}`, { headers });
           } else {
             this.isServerReport = false;
-            return axios.get(`http://kwik-tips-backend.onrender.com/api/tip-reports/bartender/${reportId}`, { headers });
+            return axios.get(`https://kwik-tips-backend.uk.r.appspot.com/api/tip-reports/bartender/${reportId}`, { headers });
           }
         })
         .then(response => {

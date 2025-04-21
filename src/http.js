@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://kwik-tips-backend.onrender.com/api',
+    baseURL: 'https://kwik-tips-backend.uk.r.appspot.com/api',
     headers: {
         'Content-Type': 'application/json',
     },
