@@ -23,7 +23,10 @@
             <th>Total Credit Card Tips</th>
             <td>${{ (report.totalCcTips ?? 0).toFixed(2) }}</td>
           </tr>
-
+          <tr v-if="isServerReport && report.totalAfterTipOuts !== undefined">
+            <th colspan="3" style="text-align: right;">Total Tips (After Tip-Outs)</th>
+            <td>${{ (report.totalAfterTipOuts ?? 0).toFixed(2) }}</td>
+          </tr>
         </table>
       </div>
 
@@ -148,13 +151,6 @@
             </tr>
           </tbody>
         </table>
-
-        <!-- Total Tips After Tip-Outs -->
-        <div v-if="report.totalAfterTipOuts !== undefined" class="summary-after-tip-outs">
-          <strong>Total Tips (After Tip-Outs):</strong>
-          <span>${{ formatCurrency(report.totalAfterTipOuts) }}</span>
-        </div>
-
 
       </div>
 
@@ -360,13 +356,4 @@ button:hover {
     break-inside: avoid !important;
   }
 }
-
-.summary-after-tip-outs {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: right;
-  color: #0077cc;
-}
-
 </style>
