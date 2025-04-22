@@ -148,6 +148,14 @@
             </tr>
           </tbody>
         </table>
+
+        <!-- Total Tips After Tip-Outs -->
+        <div v-if="report.totalAfterTipOuts !== undefined" class="summary-after-tip-outs">
+          <strong>Total Tips (After Tip-Outs):</strong>
+          <span>${{ formatCurrency(report.totalAfterTipOuts) }}</span>
+        </div>
+
+
       </div>
 
       <!-- Buttons -->
@@ -261,6 +269,14 @@ export default {
 
     goToForm() {
       this.$router.push({ name: 'generateReport' });
+    },
+
+    formatCurrency(amount) {
+      if (amount == null) return '$0.00';
+      return Number(amount).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      });
     }
 
   },
@@ -344,4 +360,13 @@ button:hover {
     break-inside: avoid !important;
   }
 }
+
+.summary-after-tip-outs {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+  color: #0077cc;
+}
+
 </style>
